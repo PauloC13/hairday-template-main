@@ -1,4 +1,5 @@
 import { apiConfig } from "./api-config";
+import dayjs, { Dayjs } from "dayjs";
 
 export async function scheduleFetchByDay({date}) {
     try {
@@ -6,7 +7,7 @@ export async function scheduleFetchByDay({date}) {
 
         const data = await response.json()
 
-        const dayleSchedules = date.filter((schedule) => 
+        const dayleSchedules = data.filter((schedule) => 
             dayjs(date).isSame(schedule.when, "day"))
 
         return dayleSchedules
