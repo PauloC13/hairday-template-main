@@ -1,5 +1,6 @@
 import dayjs, { Dayjs } from "dayjs";
 import { scheduleNew } from "../../services/schedule-new";
+import { schedulesDay } from "../schedules/load";
 
 const form = document.querySelector("form")
 const selectedDate = document.getElementById("date")
@@ -40,6 +41,9 @@ form.onsubmit = async (event) => {
             when
         });
         
+        await schedulesDay()
+
+        clientName.value = ""
         
     } catch (error) {
 
